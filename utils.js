@@ -3,7 +3,6 @@ function defaultReducer() {
   return initialState;
 }
 function childReducer(currentChild, action) {
-
   switch (action.type) {
     case "CHANGE_SPACE":
       return {

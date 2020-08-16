@@ -1,5 +1,6 @@
 const WebSocket = require("ws");
 const { defaultReducer, childReducer, getChildInfo } = require("./utils");
+const SODUX_RESERVED_ACTIONS = ["CONNECTED","DISCONNECTED"];
 class SoduxMother {
   constructor(options = {}) {
     return (initialState = {}, reducer = defaultReducer) => {
@@ -33,8 +34,10 @@ class SoduxMother {
 
       ws.on("message", (message) => {
         let dispatchedAction = JSON.parse(message);
-        this.work(dispatchedAction,newChild._id);
-        this.log("Action", dispatchedAction);
+        if(!SODUX_RESERVED_ACTIONS.include(action.type)){
+            this.work(dispatchedAction,newChild._id);
+            this.log("Action", dispatchedAction);
+        }
       });
 
       ws.on("close", () => {
