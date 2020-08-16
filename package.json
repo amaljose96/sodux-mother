@@ -1,0 +1,28 @@
+{
+  "name": "sodux-mother",
+  "version": "0.0.1",
+  "description": "Sodux Server for NodeJS",
+  "main": "sodux-mother.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amaljose96/sodux-mother.git"
+  },
+  "keywords": [
+    "sodux",
+    "sockets",
+    "websockets"
+  ],
+  "author": "Amal Jose",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amaljose96/sodux-mother/issues"
+  },
+  "homepage": "https://github.com/amaljose96/sodux-mother#readme",
+  "dependencies": {
+    "ws": "^7.3.1"
+  }
+}
