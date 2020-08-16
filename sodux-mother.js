@@ -34,7 +34,7 @@ class SoduxMother {
 
       ws.on("message", (message) => {
         let dispatchedAction = JSON.parse(message);
-        if(!SODUX_RESERVED_ACTIONS.include(action.type)){
+        if(!SODUX_RESERVED_ACTIONS.includes(dispatchedAction.type)){
             this.work(dispatchedAction,newChild._id);
             this.log("Action", dispatchedAction);
         }
@@ -68,8 +68,8 @@ class SoduxMother {
       .forEach((child) => {
         child.socket.send(
           JSON.stringify({
-            ...getChildInfo(child),
             ...this.state[currentChild.space],
+            childInfo:getChildInfo(child),
           })
         );
       });

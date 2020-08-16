@@ -1,6 +1,6 @@
 {
   "name": "sodux-mother",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Sodux Server for NodeJS",
   "main": "sodux-mother.js",
   "scripts": {

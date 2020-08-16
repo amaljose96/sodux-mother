@@ -22,10 +22,6 @@ To import the module to your application
 ```
 let SoduxMother = require("sodux-mother");
 ```
-or 
-```
-import { SoduxMother } from "sodux-mother";
-```
 
 ## How to use?
 
@@ -57,7 +53,7 @@ function reducer(oldState, action) {
       let newMessage = {
         text: action.text,
         time:Date.now(),
-        name:action.child.name
+        name:action._child.name
       };
       return {
         messages: [...oldState.messages, newMessage],
@@ -72,6 +68,7 @@ function reducer(oldState, action) {
 ```
 
 Note: Action.child would have the info of the dispatcher child. This can be set using SET_INFO Sodux Action.
+Also avoid "childInfo" key in the state since this would be overriden with the child's information while sending data.
 
 We'll be adding a combineReducers later to separate out domains
 
@@ -111,7 +108,7 @@ This can keep the user information consistent, though it would be considered as 
 
 These are some inbuilt Sodux actions which manipulate Child information.
 
-1. CHANGE_SPACE
+##### 1. CHANGE_SPACE
 This changes the space of the child to the required space.
 This would also update the child's state with the state of the new space.
 Example:
@@ -121,7 +118,7 @@ Example:
     space: "Milky Way"
 }
 ```
-2. SET_INFO
+##### 2. SET_INFO
 This is used to set child's information so that its available in action.child in the reducer.
 Example:
 ```
@@ -136,7 +133,7 @@ Example:
 The details in info can be used to identify each user. However, if 2 children have the same info, they would not be merged into a single user.
 Each child is defined by session rather than user information set in SET_INFO
 
-3. CONNECTED
+##### 3. CONNECTED
 This cannot be dispatched by the child.
 This is dispatched automatically when a child connects to the server.
 Example action dispatched:
@@ -150,7 +147,7 @@ Example action dispatched:
 }
 ```
 
-4. DISCONNECTED
+##### 4. DISCONNECTED
 This cannot be dispatched by the child.
 This is dispatched automatically when a child disconnects from the server.
 Example action dispatched:
